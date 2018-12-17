@@ -27,26 +27,37 @@ public:
 		}
 		char* p = NULL; char* q = NULL;
 		p = (char*)source; q = (char*)target;
+		*p = 'a';
 		int i = 0;
-		for ( i = 0; i < sourceLen - targetLen; i++)
-		{	
+		for (i = 0; i < sourceLen - targetLen; i++)
+		{
 			p = p + i;
+			q = (char*)target;
 			int j = 0;
-			for ( j = 0; j < targetLen; j++)
+			for (j = 0; j < targetLen; j++)
 			{
-				if ((*p) != (*q)) {
-					break
+				if ((*p++) != (*q++)) {
+					break;
 				}
 
 			}
 			if (j == targetLen)
 				break;
 		}
-		if (i != (sourceLen -targetLen))
+		if (i != (sourceLen - targetLen))
 		{
 			return -1;
 		}
 		else {
 			return i;
 		}
-};
+	};
+	int subMain()
+	{
+		char* source = "1234";
+		char* target = "235";
+		int res = strStr(source, target);
+		printf("%s, %s\r\n", source, target);
+		return res;
+	}
+}; 
